@@ -1,3 +1,16 @@
+-- Lib + Window
+local UILib = loadstring(game:HttpGet('https://raw.githubusercontent.com/inceldom/kinx/main/ui'))()
+local win = UILib:Window("Desert War", Color3.fromRGB(44, 120, 224), Enum.KeyCode.RightControl)
+
+-- Main Section
+local MainSection = win:Tab("Main")
+
+MainSection:Button("Remove Doors", function()
+	local doors = workspace.Map.World.Bases.Settlers:FindFirstChild("GP Door")
+	if doors then doors:Destroy() end
+end)
+
+-- ESP Section
 local ESPSection = win:Tab("ESP")
 
 local ESPEnabled = false
@@ -254,3 +267,7 @@ ESPSection:Toggle("Tracers", false, function(v) ShowTracers = v end)
 ESPSection:Toggle("Distance Display", false, function(v) ShowDistance = v end)
 ESPSection:Toggle("Chams (Highlight)", false, function(v) UseChams = v end)
 ESPSection:Toggle("Only Show Enemies", false, function(v) OnlyEnemies = v end)
+
+-- Settings Section
+local Settings = win:Tab("Settings")
+Settings:Label("UI Toggle Key:  Right-Ctrl")
